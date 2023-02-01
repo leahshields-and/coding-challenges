@@ -1,0 +1,2 @@
+## How to run
+Run the command `` mvn clean test `` to run all the unit tests. The strings provided with the challenge are be printed to the console on running the tests, to make it clear what the output for these was.

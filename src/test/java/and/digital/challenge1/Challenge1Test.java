@@ -11,7 +11,7 @@ public class Challenge1Test {
             "the sun shines down[CTRL+C] on [CTRL+V][CTRL+C] the busy [CTRL+V].",
             "a majestic lion[CTRL+C] searches for [CTRL+V] in the tall grass.",
             "the shimmering star[CTRL+X]Twinkling in the dark, [CTRL+V] shines bright.",
-            "[CTRL+X]a fluffy white cloud drifts [CTRL+V][CTRL+C] across the sky, [CTRL+V]"};
+            "[CTRL+X]a fluffy white cloud drifts [CTRL+V][CTRL+C] across the sky, [CTRL+V]" };
 
     Challenge1 challenge1;
 
@@ -55,7 +55,8 @@ public class Challenge1Test {
 
     @Test
     public void shouldCopyAndPasteTwice() {
-        String result = challenge1.runChallenge("first copy[CTRL+C] paste here [CTRL+V] copy[CTRL+C] last paste [CTRL+V]");
+        String result = challenge1
+                .runChallenge("first copy[CTRL+C] paste here [CTRL+V] copy[CTRL+C] last paste [CTRL+V]");
         assertEquals("first copy paste here first copy copy last paste first copy paste here first copy copy", result);
     }
 
@@ -74,38 +75,43 @@ public class Challenge1Test {
 
     @Test
     public void shouldManipulateFirstString() {
-        String result = challenge1.runChallenge(testStrings[0]);
-        assertEquals("the big red fox jumps over the big red lazy dog.", result);
+        runOnTestString(testStrings[0], "the big red fox jumps over the big red lazy dog.");
     }
 
     @Test
     public void shouldManipulateSecondString() {
-        String result = challenge1.runChallenge(testStrings[1]);
-        assertEquals("the tall oak tree towers over the lush green meadow.", result);
+        runOnTestString(testStrings[1], "the tall oak tree towers over the lush green meadow.");
     }
 
     @Test
     public void shouldManipulateThirdString() {
-        String result = challenge1.runChallenge(testStrings[2]);
-        assertEquals("the sun shines down on the sun shines down the busy the sun shines down on the sun shines down.",
-                result);
+        runOnTestString(testStrings[2],
+                "the sun shines down on the sun shines down the busy the sun shines down on the sun shines down.");
     }
 
     @Test
     public void shouldManipulateFourthString() {
-        String result = challenge1.runChallenge(testStrings[3]);
-        assertEquals("a majestic lion searches for a majestic lion in the tall grass.", result);
+        runOnTestString(testStrings[3], "a majestic lion searches for a majestic lion in the tall grass.");
     }
 
     @Test
     public void shouldManipulateFifthString() {
-        String result = challenge1.runChallenge(testStrings[4]);
-        assertEquals("Twinkling in the dark, the shimmering star shines bright.", result);
+        runOnTestString(testStrings[4], "Twinkling in the dark, the shimmering star shines bright.");
     }
 
     @Test
     public void shouldManipulateSixthString() {
-        String result = challenge1.runChallenge(testStrings[5]);
-        assertEquals("a fluffy white cloud drifts  across the sky, a fluffy white cloud drifts ", result);
+        runOnTestString(testStrings[5], "a fluffy white cloud drifts  across the sky, a fluffy white cloud drifts ");
+    }
+
+    private void runOnTestString(String testInput, String expectedOutput) {
+        System.out.println("-----------------------");
+        System.out.println("Running challenge on input:");
+        System.out.println(testInput);
+        String result = challenge1.runChallenge(testInput);
+        System.out.println("RESULT:");
+        System.out.println(result);
+        System.out.println("-----------------------");
+        assertEquals(expectedOutput, result);
     }
 }
